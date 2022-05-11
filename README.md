@@ -15,4 +15,5 @@ As for the consumer:
 
 Note:
 - If you're running more than one brokers, write the ports name like the following:
+
 `port1,port2,port3`
