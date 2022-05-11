@@ -6,8 +6,11 @@ How to run:
 2. Make sure that your Kafka brokers and Zookeeper are running
 3. Go to code folder by typing `cd code` onto your terminal
 4. Run the following to activate your producer:
+
 `python3 producer.py {topic name} {host name} {ports name} {size}`
+
 As for the consumer:
+
 `python3 consumer.py {topic name} {host name} {ports name} {size} {copy of .csv file name}`
 
 Note:
