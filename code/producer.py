@@ -2,7 +2,7 @@ from kafka import KafkaProducer
 import pandas as pd
 import json, sys, time
 
-def producer_func(topic, server, size, file_csv = '../data/disaster_response_messages_training.csv'):
+def producer_func(topic, server, size, file_csv = '../data/produce/disaster_response_messages_training.csv'):
     producer = KafkaProducer(bootstrap_servers=server,
             value_serializer=lambda v: json.dumps(v).encode('utf-8')
         )
