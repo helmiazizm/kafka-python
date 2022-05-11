@@ -2,7 +2,16 @@ from kafka import KafkaProducer
 import pandas as pd
 import json, sys, time
 
-def producer_func(topic, server, size, file_csv = '../data/produce/disaster_response_messages_training.csv'):
+def server_list(host, ports):
+    if ',' in ports:
+        ports = list(ports.split(","))
+        servers = [host + ":" + port for port in ports]
+    else:
+        servers = f'{host}:{ports}'
+    return servers
+
+def producer_func(topic, host, ports, size, file_csv = '../data/produce/suicide.csv'):
+    server = server_list(host, ports)
     producer = KafkaProducer(bootstrap_servers=server,
             value_serializer=lambda v: json.dumps(v).encode('utf-8')
         )
@@ -17,4 +26,4 @@ def producer_func(topic, server, size, file_csv = '../data/produce/disaster_resp
             # time.sleep(1)
 
 if __name__ == "__main__":
-    producer_func(sys.argv[1], sys.argv[2], sys.argv[3])
+    producer_func(sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4])
